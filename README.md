@@ -27,9 +27,48 @@ A local businessman wishes to pruchase a computational system that would take ov
 
 Design
 ---------
+### First sketch of the system
+![SystemDiagram](IMG_0183.JPG)
+[Fig. 1](#fig1) First sketch of the system showing the main input/output components, actions, and software requirements.
 
 Development
 --------
+### 1. Script to install the app
+The following script creates the app folder and inside it creates two more folders: db and scripts. 
+```.sh
+#!/bin/bash
+
+#This file creates the folder structure for the
+#minimal Car Rental App
+
+echo "Starting the installation"
+echo "Enter the path where you want to install. Press Enter"
+
+read path
+
+#moving to the desired location
+cd $path
+echo "moving to $path"
+echo $PWD
+#Check for correct change directory
+if [ "$path" != "$PWD" ]; then
+        echo "Error creating the folder structure"
+        exit
+fi
+
+#Create App folder
+mkdir RentalCarApp
+
+cd RentalCarApp
+
+#create folder for database and scripts
+mkdir db
+mkdir scripts
+
+echo "structure created successfully"
+```
+The file works but it shows an error on line 16. [To do] Fix this bug.
+**Fixed** the issue was with suquare brackets in line 16, this was where the if comparison was located.
 
 Evaluation
 -----------
